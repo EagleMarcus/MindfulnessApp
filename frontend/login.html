@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>MindfulNotes - Register</title>
+  <title>MindfulNotes - Login</title>
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
   />
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-  <link rel="stylesheet" href="/user-service/css/styles.css" />
+  <!-- Adjust path to your user-service CSS -->
+  <link rel="stylesheet" href="css/styles.css" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 
@@ -46,34 +47,10 @@
       <div class="container">
         <div class="row">
           <div class="col s12 center-align">
-            <h3>Register Now</h3>
-            <p>Become part of the MindfulNotes community!</p>
+            <h3>Welcome Back</h3>
+            <p>Please enter your details to sign in.</p>
           </div>
-          <form class="col s12" id="registerForm">
-            <div class="row">
-              <div class="input-field col s6">
-                <input id="first_name" type="text" class="validate" required />
-                <label for="first_name">First Name</label>
-              </div>
-              <div class="input-field col s6">
-                <input id="last_name" type="text" class="validate" required />
-                <label for="last_name">Last Name</label>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="input-field col s12">
-                <select id="gender" required>
-                  <option value="" disabled selected>Choose your option</option>
-                  <option value="Male">Male</option>
-                  <option value="Female">Female</option>
-                  <option value="Other">Other</option>
-                  <option value="Prefer not to say">Prefer Not to Say</option>
-                </select>
-                <label for="gender">Gender</label>
-              </div>
-            </div>
-
+          <form class="col s12" id="loginForm">
             <div class="row">
               <div class="input-field col s12">
                 <input id="email" type="email" class="validate" required />
@@ -83,34 +60,24 @@
 
             <div class="row">
               <div class="input-field col s12">
-                <input id="password" type="password" class="validate" required minlength="6" />
+                <input id="password" type="password" class="validate" required />
                 <label for="password">Password</label>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="input-field col s12">
-                <input
-                  id="confirm_password"
-                  type="password"
-                  class="validate"
-                  required
-                  minlength="6"
-                />
-                <label for="confirm_password">Confirm Password</label>
+                <p class="right-align">
+                  <a href="/forgotPassword/confirmEmail">Forgot Password?</a>
+                </p>
               </div>
             </div>
 
             <div class="row">
               <div class="col s12 center-align">
-                <button class="btn btn-accent" type="submit" id="submitRegister">
-                  Register
+                <button class="btn btn-primary" type="submit" id="loginSubmit">
+                  Sign In
                 </button>
               </div>
               <div class="col s12 center-align" style="margin-top: 1rem;">
-                Already have an account?
-                <a href="/user/login" class="btn btn-primary" style="padding: 0 1rem; font-weight: 500;">
-                  Login Here
+                Don't have an account?
+                <a href="/user/register" class="btn btn-accent" style="padding: 0 1rem; font-weight: 500;">
+                  Sign Up for Free
                 </a>
               </div>
             </div>
@@ -122,5 +89,14 @@
 
   <footer class="page-footer" style="background-color: var(--dark); color: var(--light); padding: 1rem 0; margin-top: auto;">
     <div class="container center-align">
-      Made with ❤️ by MedMinder+ &copy; 2025
-    </div
+      Made with ❤️ by MindfulNotes &copy; 2025
+    </div>
+  </footer>
+
+  <!-- JS Includes -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="/js/loginScript.js"></script>
+
+</body>
+</html>
