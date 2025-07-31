@@ -3,11 +3,17 @@ document.addEventListener('DOMContentLoaded', function() {
   var elems = document.querySelectorAll('.sidenav');
   M.Sidenav.init(elems);
 
-  // Add login form submit listener inside DOMContentLoaded to ensure elements exist
   const loginForm = document.getElementById('loginForm');
+  const loginButton = document.getElementById('loginSubmit');
+  const errorDiv = document.getElementById('loginError');
+
   if (loginForm) {
     loginForm.addEventListener('submit', async (e) => {
       e.preventDefault();
+
+      errorDiv.textContent = '';
+      loginButton.disabled = true;
+      loginButton.textContent = 'Logging in...';
 
       const email = document.getElementById('email').value.trim();
       const password = document.getElementById('password').value.trim();
@@ -24,10 +30,14 @@ document.addEventListener('DOMContentLoaded', function() {
           window.location.href = '/dashboard';
         } else {
           const data = await res.json();
-          alert(data.message || 'Login failed. Please try again.');
+          errorDiv.textContent = data.message || 'Login failed. Please try again.';
+          loginButton.disabled = false;
+          loginButton.textContent = 'Sign In';
         }
       } catch (err) {
-        alert('Error logging in. Please try again later.');
+        errorDiv.textContent = 'Error logging in. Please try again later.';
+        loginButton.disabled = false;
+        loginButton.textContent = 'Sign In';
       }
     });
   }
