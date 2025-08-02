@@ -3,6 +3,7 @@ const router = express.Router();
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
+const verifyToken = require('./authMiddleware');
 
 // Register route
 router.post('/register', async (req, res) => {
@@ -29,5 +30,27 @@ router.post('/register', async (req, res) => {
   }
 });
 
+// Login route
+router.post('/login', async (req, res) => {
+  const { email, password } = req.body;
+  try {
+    const user = await User.findOne({ email });
+    if (!user) return res.status(400).json({ message: 'Invalid email or password' });
+
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) return res.status(400).json({ message: 'Invalid email or password' });
+
+    const token = jwt.sign(
+      { userId: user._id, email: user.email },
+      process.env.JWT_SECRET || 'defaultsecret',
+      { expiresIn: '1h' }
+    );
+
+    res.status(200).json({ token, message: 'Login successful' });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
 
 module.exports = router;
