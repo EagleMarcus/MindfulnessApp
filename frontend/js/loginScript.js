@@ -26,8 +26,9 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         if (res.ok) {
-          // Redirect to dashboard or home after successful login
-          window.location.href = '/dashboard';
+          const data = await res.json();
+          localStorage.setItem('authToken', data.token);
+          window.location.href = '/dashboard';  
         } else {
           const data = await res.json();
           errorDiv.textContent = data.message || 'Login failed. Please try again.';

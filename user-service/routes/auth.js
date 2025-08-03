@@ -53,4 +53,25 @@ router.post('/login', async (req, res) => {
   }
 });
 
+router.get('/user/dashboard', verifyToken, async (req, res) => {
+  try {
+    const user = await User.findById(req.user.userId).select('firstName');
+    if (!user) return res.status(404).json({ message: 'User not found' });
+
+    const sampleNotes = [
+      { text: 'Remember to meditate daily' },
+      { text: 'Buy groceries' },
+      { text: 'Read a chapter of a book' }
+    ];
+
+    res.json({
+      firstName: user.firstName,
+      notes: sampleNotes,
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
 module.exports = router;
