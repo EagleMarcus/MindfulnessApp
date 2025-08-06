@@ -17,6 +17,11 @@
 
 nav {
   background-color: var(--dark) !important;  /* brown */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1100;
 }
 
 .brand-logo {
@@ -49,6 +54,7 @@ body {
 }
 
 .site-wrapper {
+  padding-top: 64px;
   min-height: 100vh; /* makes sure it's at least full screen height */
   display: flex;
   flex-direction: column;
