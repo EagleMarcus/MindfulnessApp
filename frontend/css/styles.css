@@ -6,6 +6,11 @@
   --accent-dark: #8D0801; /* dark red */
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+
 .btn-primary {
   background-color: var(--primary) !important;  /* olive green */
   color: var(--light) !important;
