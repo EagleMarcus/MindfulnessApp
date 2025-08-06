@@ -4,4 +4,6 @@ $(document).ready(function () {
   $('.parallax').parallax();
   $('.scrollspy').scrollSpy();
   $('select').formSelect();
+  $('.modal').modal();
 });
+
