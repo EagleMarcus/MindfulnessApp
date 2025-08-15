@@ -5,8 +5,6 @@ const mongoose = require('mongoose');
 const authRoutes = require('./routes/auth');
 
 
-
-
 const app = express();
 
 app.use(cors({
