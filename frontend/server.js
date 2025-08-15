@@ -20,5 +20,9 @@ app.get('/dashboard', (req, res) => {
   res.sendFile(path.join(__dirname, 'dashboard.html'));
 });
 
+app.get('/notes', (req, res) => {
+  res.sendFile(path.join(__dirname, 'notes.html'));
+});
+
 const PORT = process.env.PORT || 5001;
 app.listen(PORT, () => console.log(`Frontend server running on port ${PORT}`));
